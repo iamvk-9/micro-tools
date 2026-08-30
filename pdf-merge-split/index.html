@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PDFMergeSplit — merge multiple PDFs and split a PDF into pages or ranges. 100% in your browser, nothing is uploaded.">
+  <title>PDFMergeSplit — Merge &amp; Split PDFs</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300a99b'/%3E%3Crect x='14' y='22' width='14' height='26' rx='2' fill='%23fff'/%3E%3Crect x='36' y='22' width='14' height='26' rx='2' fill='%23fff'/%3E%3Cpath d='M28 30l8-4v-4l8 6-8 6v-4z' fill='%2300a99b'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../" aria-label="Micro tools home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="22" height="22">
+            <rect width="64" height="64" rx="14" fill="#00a99b"/>
+            <rect x="14" y="22" width="14" height="26" rx="2" fill="#fff"/>
+            <rect x="36" y="22" width="14" height="26" rx="2" fill="#fff"/>
+            <path d="M28 30l8-4v-4l8 6-8 6v-4z" fill="#00a99b"/>
+          </svg>
+        </span>
+        <span class="brand-name">PDF<span>MergeSplit</span></span>
+      </a>
+      <a class="back-link" href="../">← All tools</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1 class="hero-title">Merge &amp; split <span class="accent">PDFs</span></h1>
+      <p class="hero-sub">Combine multiple PDFs into one, or split a PDF into individual pages and ranges. All processed locally.</p>
+
+      <div class="tabs" role="tablist">
+        <button role="tab" class="tab active" id="tabMerge" aria-selected="true">Merge</button>
+        <button role="tab" class="tab" id="tabSplit" aria-selected="false">Split</button>
+      </div>
+
+      <div id="panelMerge" class="panel" role="tabpanel">
+        <div id="mergeDrop" class="dropzone" role="button" tabindex="0" aria-label="Drop PDFs here or browse">
+          <input type="file" id="mergeInput" accept=".pdf" multiple hidden aria-hidden="true" tabindex="-1">
+          <svg class="dz-icon" viewBox="0 0 64 64" width="46" height="46" aria-hidden="true">
+            <rect width="64" height="64" rx="12" fill="#e7f4f2"/>
+            <rect x="14" y="24" width="13" height="24" rx="2" fill="#00a99b"/>
+            <rect x="37" y="24" width="13" height="24" rx="2" fill="#00a99b"/>
+            <path d="M26 31l8-3v-4l8 6-8 6v-4z" fill="#fff"/>
+          </svg>
+          <p class="dz-title"><strong>Drop PDFs here, in order</strong></p>
+          <p class="dz-sub">or</p>
+          <button type="button" id="mergeBrowseBtn" class="btn btn-primary">Browse</button>
+          <p class="dz-hint">The order of the list is preserved when merging</p>
+        </div>
+        <div id="mergeList" class="file-list"></div>
+        <div class="actions">
+          <button type="button" id="mergeBtn" class="btn btn-primary btn-lg">Merge PDFs</button>
+          <button type="button" id="mergeClearBtn" class="btn btn-ghost btn-lg">Clear</button>
+        </div>
+      </div>
+
+      <div id="panelSplit" class="panel hidden" role="tabpanel">
+        <div id="splitDrop" class="dropzone" role="button" tabindex="0" aria-label="Drop a PDF here or browse">
+          <input type="file" id="splitInput" accept=".pdf" hidden aria-hidden="true" tabindex="-1">
+          <svg class="dz-icon" viewBox="0 0 64 64" width="46" height="46" aria-hidden="true">
+            <rect width="64" height="64" rx="12" fill="#e7f4f2"/>
+            <path d="M18 14h28v36H18z" fill="#00a99b"/>
+            <path d="M32 14v36" stroke="#fff" stroke-width="3"/>
+          </svg>
+          <p class="dz-title"><strong>Drop a PDF to split</strong></p>
+          <p class="dz-sub">or</p>
+          <button type="button" id="splitBrowseBtn" class="btn btn-primary">Browse</button>
+          <p class="dz-hint">Split into single pages, or extract a page range</p>
+        </div>
+        <div id="splitInfo" class="result hidden"></div>
+
+        <div class="split-controls">
+          <div class="mode-btns">
+            <button type="button" id="modeSingle" class="mode-btn active">One file per page</button>
+            <button type="button" id="modeRange" class="mode-btn">Extract range</button>
+          </div>
+          <div id="rangeRow" class="range-row hidden">
+            <div class="dim">
+              <label for="rangeFrom">From page</label>
+              <input type="number" id="rangeFrom" class="dim-input" min="1" value="1">
+            </div>
+            <span class="dim-x">to</span>
+            <div class="dim">
+              <label for="rangeTo">To page</label>
+              <input type="number" id="rangeTo" class="dim-input" min="1" value="1">
+            </div>
+          </div>
+          <div class="split-total" id="splitTotal"></div>
+          <button type="button" id="splitBtn" class="btn btn-primary btn-lg">Split</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top"><strong>PDFMergeSplit</strong><span>100% client-side · nothing leaves this device</span></div>
+  </footer>
+
+  <div id="toastHost" class="toast-host" aria-live="assertive"></div>
+
+  <script src="libs/pdf-lib.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
