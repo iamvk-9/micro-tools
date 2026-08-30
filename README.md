@@ -19,6 +19,7 @@ Hosted live on GitHub Pages: **https://iamvk-9.github.io/micro-tools/**
 | 9 | Duplicate Text Remover | `duplicate-remover/` | Remove duplicate lines from a text list |
 | 10 | Password Generator | `password-generator/` | Strong random passwords, exportable |
 | 11 | Random Number Generator | `random-number/` | Random numbers in a range, with/without repeats |
+| 12 | Instagram Reel Saver | `reel-downloader/` | Inspect Reel links, honest guidance on saving |
 
 ## Run locally
 
