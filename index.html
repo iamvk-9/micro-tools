@@ -20,33 +20,35 @@
       color: var(--ink); background: var(--bg); line-height: 1.5; -webkit-font-smoothing: antialiased;
     }
     .topbar { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); }
-    .topbar-inner { max-width: 900px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+    .topbar-inner { max-width: 1120px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
     .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
     .brand-mark { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; }
     .brand-name { font-size: 19px; font-weight: 700; letter-spacing: -.02em; }
     .brand-name span { color: var(--teal); }
     .topbar-note { margin-left: auto; font-size: 13px; color: var(--muted); }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 40px 20px 60px; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 20px 60px; }
     .hero-title { font-size: 32px; font-weight: 800; letter-spacing: -.03em; margin: 0 0 8px; text-align: center; }
     .hero-title .accent { color: var(--teal); }
-    .hero-sub { text-align: center; color: var(--muted); font-size: 15px; max-width: 560px; margin: 0 auto 34px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .hero-sub { text-align: center; color: var(--muted); font-size: 15px; max-width: 620px; margin: 0 auto 34px; }
+    .count { text-align: center; font-size: 13px; color: var(--faint); margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .card {
       background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 26px; text-decoration: none; color: inherit; box-shadow: var(--shadow);
+      padding: 22px; text-decoration: none; color: inherit; box-shadow: var(--shadow);
       display: flex; flex-direction: column; transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
     }
     .card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(8,43,38,.14); border-color: var(--teal); }
-    .card-icon { width: 54px; height: 54px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 16px; }
-    .card-title { font-size: 20px; font-weight: 700; margin: 0 0 6px; }
-    .card-desc { font-size: 14px; color: var(--muted); margin: 0 0 18px; flex: 1; }
-    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .card-icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 14px; }
+    .card-title { font-size: 18px; font-weight: 700; margin: 0 0 5px; }
+    .card-desc { font-size: 13.5px; color: var(--muted); margin: 0 0 16px; flex: 1; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
     .tag {
-      display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 9px;
+      display: inline-block; font-size: 11.5px; font-weight: 600; padding: 3px 8px;
       border-radius: 999px; background: var(--teal-tint); color: var(--teal-deep);
     }
-    .arrow { margin-left: auto; font-size: 20px; color: var(--teal); font-weight: 700; align-self: center; }
+    .arrow { margin-left: auto; font-size: 18px; color: var(--teal); font-weight: 700; align-self: center; }
     .footer { border-top: 1px solid var(--line); background: var(--surface); padding: 24px 20px; text-align: center; color: var(--muted); font-size: 13.5px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } .topbar-note { display: none; } }
   </style>
 </head>
@@ -70,12 +72,12 @@
   <main class="wrap">
     <h1 class="hero-title">Small tools, <span class="accent">zero uploads</span></h1>
     <p class="hero-sub">A growing collection of micro browser utilities. Every one runs entirely on your device — open it, use it, done.</p>
+    <p class="count">10 tools and counting</p>
 
     <div class="grid">
       <a class="card" href="./qr/">
         <div class="card-icon" style="background:var(--teal-tint)">
-          <svg viewBox="0 0 64 64" width="30" height="30">
-            <rect width="64" height="64" rx="12" fill="none"/>
+          <svg viewBox="0 0 64 64" width="28" height="28">
             <rect x="14" y="14" width="16" height="16" rx="3" fill="#00a99b"/>
             <rect x="34" y="14" width="16" height="16" rx="3" fill="#00a99b"/>
             <rect x="14" y="34" width="16" height="16" rx="3" fill="#00a99b"/>
@@ -85,29 +87,131 @@
             <rect x="18" y="38" width="8" height="8" rx="1" fill="#fff"/>
           </svg>
         </div>
-        <h2 class="card-title">QRany</h2>
-        <p class="card-desc">Generate QR codes from any text or URL. Choose error correction, pixel size and colors, then download as PNG or SVG.</p>
-        <div class="card-tags">
-          <span class="tag">QR Codes</span><span class="tag">Text / URL</span><span class="tag">PNG &amp; SVG</span>
+        <h2 class="card-title">QR Code Generator</h2>
+        <p class="card-desc">Generate QR codes from any text, link or image metadata. Pick error correction, size and colors — download as PNG or SVG.</p>
+        <div class="card-tags"><span class="tag">QR Codes</span><span class="tag">PNG / SVG</span></div>
+      </a>
+
+      <a class="card" href="./image-compressor/">
+        <div class="card-icon" style="background:var(--teal-tint)">
+          <svg viewBox="0 0 64 64" width="28" height="28">
+            <path d="M16 16h24l8 8v24H16z" fill="#00a99b" opacity=".95"/>
+            <path d="M14 50h36v-4H14z" fill="#00a99b"/>
+            <circle cx="24" cy="22" r="3" fill="#fff"/>
+          </svg>
         </div>
-        <span class="arrow">→</span>
+        <h2 class="card-title">Image Compressor</h2>
+        <p class="card-desc">Shrink JPG, PNG and WebP file sizes with adjustable quality. Compare before/after and download one or all.</p>
+        <div class="card-tags"><span class="tag">Images</span><span class="tag">Size</span></div>
+      </a>
+
+      <a class="card" href="./image-resizer/">
+        <div class="card-icon" style="background:var(--teal-tint)">
+          <svg viewBox="0 0 64 64" width="28" height="28">
+            <rect x="17" y="17" width="30" height="30" rx="3" fill="none" stroke="#00a99b" stroke-width="5"/>
+            <path d="M17 17l10 10M17 42l25-25M42 17L17 42" stroke="#00a99b" stroke-width="5"/>
+          </svg>
+        </div>
+        <h2 class="card-title">Image Resizer</h2>
+        <p class="card-desc">Resize images by exact pixels or a percentage, with an aspect-ratio lock. Preview before downloading.</p>
+        <div class="card-tags"><span class="tag">Images</span><span class="tag">Dimensions</span></div>
+      </a>
+
+      <a class="card" href="./pdf-converter/">
+        <div class="card-icon" style="background:var(--teal-tint)">
+          <svg viewBox="0 0 64 64" width="28" height="28">
+            <path d="M18 46h28v6H18z" fill="#00a99b"/>
+            <path d="M18 12h18l10 10v24H18z" fill="#00a99b" opacity=".95"/>
+            <path d="M20 40h24v3H20z" fill="#fff"/>
+            <text x="46" y="34" font-size="20" font-weight="bold" fill="#fff">↔</text>
+          </svg>
+        </div>
+        <h2 class="card-title">PDF ⇄ Word</h2>
+        <p class="card-desc">Convert Word documents to PDF, and extract PDF text into a Word-openable document. All local, nothing uploaded.</p>
+        <div class="card-tags"><span class="tag">PDF</span><span class="tag">DOCX</span></div>
+      </a>
+
+      <a class="card" href="./pdf-merge-split/">
+        <div class="card-icon" style="background:var(--teal-tint)">
+          <svg viewBox="0 0 64 64" width="28" height="28">
+            <rect x="14" y="22" width="14" height="26" rx="2" fill="#00a99b"/>
+            <rect x="36" y="22" width="14" height="26" rx="2" fill="#00a99b"/>
+            <path d="M28 30l8-4v-4l8 6-8 6v-4z" fill="#fff"/>
+          </svg>
+        </div>
+        <h2 class="card-title">PDF Merge &amp; Split</h2>
+        <p class="card-desc">Combine multiple PDFs into one, or split a PDF into individual pages and page ranges.</p>
+        <div class="card-tags"><span class="tag">PDF</span><span class="tag">Merge</span><span class="tag">Split</span></div>
       </a>
 
       <a class="card" href="./wordtopdf/">
         <div class="card-icon" style="background:var(--teal-tint)">
-          <svg viewBox="0 0 64 64" width="30" height="30">
-            <rect width="64" height="64" rx="12" fill="none"/>
+          <svg viewBox="0 0 64 64" width="28" height="28">
             <path d="M18 46h28v6H18z" fill="#00a99b"/>
             <path d="M18 12h18l10 10v24H18z" fill="#00a99b" opacity=".95"/>
             <path d="M20 30h24v3H20zm0 6h24v3H20z" fill="#fff"/>
           </svg>
         </div>
         <h2 class="card-title">FileToPDF</h2>
-        <p class="card-desc">Convert images, text, Word, Excel and HTML files to PDF. Vector output for images and text, rasterized for Office docs.</p>
-        <div class="card-tags">
-          <span class="tag">File to PDF</span><span class="tag">DOCX / XLSX</span><span class="tag">Images</span>
+        <p class="card-desc">Convert images, text, Word, Excel and HTML files to PDF. Crisp vector output for images and text.</p>
+        <div class="card-tags"><span class="tag">Any file</span><span class="tag">PDF</span></div>
+      </a>
+
+      <a class="card" href="./text-case/">
+        <div class="card-icon" style="background:var(--teal-tint)">
+          <svg viewBox="0 0 64 64" width="28" height="28">
+            <text x="32" y="44" font-size="34" font-weight="bold" text-anchor="middle" fill="#00a99b" font-family="Georgia,serif">Aa</text>
+          </svg>
         </div>
-        <span class="arrow">→</span>
+        <h2 class="card-title">Text Case Converter</h2>
+        <p class="card-desc">Convert between uppercase, lowercase, title case, sentence case, camelCase, snake_case and more.</p>
+        <div class="card-tags"><span class="tag">Text</span><span class="tag">Case</span></div>
+      </a>
+
+      <a class="card" href="./word-counter/">
+        <div class="card-icon" style="background:var(--teal-tint)">
+          <svg viewBox="0 0 64 64" width="28" height="28">
+            <text x="32" y="46" font-size="36" font-weight="bold" text-anchor="middle" fill="#00a99b" font-family="Georgia,serif">∑</text>
+          </svg>
+        </div>
+        <h2 class="card-title">Word &amp; Character Counter</h2>
+        <p class="card-desc">Instant counts of words, characters, sentences, paragraphs and estimated reading time.</p>
+        <div class="card-tags"><span class="tag">Text</span><span class="tag">Stats</span></div>
+      </a>
+
+      <a class="card" href="./duplicate-remover/">
+        <div class="card-icon" style="background:var(--teal-tint)">
+          <svg viewBox="0 0 64 64" width="28" height="28">
+            <rect x="18" y="14" width="20" height="20" rx="4" fill="#00a99b" opacity=".5"/>
+            <rect x="26" y="30" width="20" height="20" rx="4" fill="#00a99b"/>
+          </svg>
+        </div>
+        <h2 class="card-title">Duplicate Text Remover</h2>
+        <p class="card-desc">Strip duplicate lines from a text list with options for case-sensitivity, sorting and empty-line cleanup.</p>
+        <div class="card-tags"><span class="tag">Text</span><span class="tag">Cleanup</span></div>
+      </a>
+
+      <a class="card" href="./password-generator/">
+        <div class="card-icon" style="background:var(--teal-tint)">
+          <svg viewBox="0 0 64 64" width="28" height="28">
+            <circle cx="32" cy="30" r="9" fill="none" stroke="#00a99b" stroke-width="5"/>
+            <path d="M32 37v10" stroke="#00a99b" stroke-width="5"/>
+          </svg>
+        </div>
+        <h2 class="card-title">Password Generator</h2>
+        <p class="card-desc">Create strong random passwords with custom length and character sets. Export multiple at once.</p>
+        <div class="card-tags"><span class="tag">Security</span><span class="tag">Random</span></div>
+      </a>
+
+      <a class="card" href="./random-number/">
+        <div class="card-icon" style="background:var(--teal-tint)">
+          <svg viewBox="0 0 64 64" width="28" height="28">
+            <text x="32" y="46" font-size="38" font-weight="bold" text-anchor="middle" fill="#00a99b" font-family="Menlo,monospace">≠</text>
+          </svg>
+        </div>
+        <h2 class="card-title">Random Number Generator</h2>
+        <p class="card-desc">Generate random numbers in any range, with or without duplicates. Multiple results at once.</p>
+        <div class="card-tags"><span class="tag">Random</span><span class="tag">Numbers</span></div>
       </a>
     </div>
   </main>
