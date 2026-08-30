@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ImgResize — resize images by exact dimensions or a percentage, with aspect-ratio lock. 100% in your browser, nothing is uploaded.">
+  <title>ImgResize — Image Resizer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300a99b'/%3E%3Crect x='18' y='18' width='28' height='28' rx='3' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M18 18l10 10M18 42l24-24M42 18L18 42' stroke='%2300a99b' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../" aria-label="Micro tools home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="22" height="22">
+            <rect width="64" height="64" rx="14" fill="#00a99b"/>
+            <rect x="18" y="18" width="28" height="28" rx="3" fill="none" stroke="#fff" stroke-width="4"/>
+            <path d="M18 18l10 10M18 42l24-24M42 18L18 42" stroke="#00a99b" stroke-width="4"/>
+          </svg>
+        </span>
+        <span class="brand-name">Img<span>Resize</span></span>
+      </a>
+      <a class="back-link" href="../">← All tools</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1 class="hero-title">Resize <span class="accent">images</span></h1>
+      <p class="hero-sub">Change image dimensions by exact pixels or a percentage, keeping the aspect ratio. Processed locally — nothing is uploaded.</p>
+
+      <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="Drop an image here or browse">
+        <input type="file" id="fileInput" accept="image/*" hidden aria-hidden="true" tabindex="-1">
+        <svg class="dz-icon" viewBox="0 0 64 64" width="50" height="50" aria-hidden="true">
+          <rect width="64" height="64" rx="12" fill="#e7f4f2"/>
+          <rect x="17" y="17" width="30" height="30" rx="3" fill="none" stroke="#00a99b" stroke-width="4"/>
+          <path d="M17 17l10 10M17 42l25-25M42 17L17 42" stroke="#fff" stroke-width="4"/>
+        </svg>
+        <p class="dz-title"><strong>Drop an image here</strong></p>
+        <p class="dz-sub">or</p>
+        <button type="button" id="browseBtn" class="btn btn-primary">Browse</button>
+        <p class="dz-hint">JPG, PNG, WebP, GIF, BMP</p>
+      </div>
+
+      <div class="editor panel hidden" id="editor">
+        <div class="editor-main">
+          <div class="preview">
+            <img id="previewImg" alt="Preview">
+            <div class="dims" id="origDims"></div>
+          </div>
+          <div class="editor-controls">
+            <div class="mode-btns">
+              <button type="button" id="modePixel" class="mode-btn active">Pixels</button>
+              <button type="button" id="modePercent" class="mode-btn">Percent</button>
+            </div>
+            <div class="dim-row" id="dimRowPixel">
+              <div class="dim">
+                <label for="newWidth">Width</label>
+                <input type="number" id="newWidth" class="dim-input" min="1">
+              </div>
+              <span class="dim-x">×</span>
+              <div class="dim">
+                <label for="newHeight">Height</label>
+                <input type="number" id="newHeight" class="dim-input" min="1">
+              </div>
+            </div>
+            <div class="dim-row hidden" id="dimRowPercent">
+              <div class="dim">
+                <label for="percentVal">Percent %</label>
+                <input type="number" id="percentVal" class="dim-input" min="1" max="1000" value="50">
+              </div>
+            </div>
+            <label class="check"><input type="checkbox" id="keepRatio" checked> Keep aspect ratio</label>
+            <label class="field-label" for="resizeFormat">Output format</label>
+            <select id="resizeFormat">
+              <option value="jpeg">JPEG</option>
+              <option value="png">PNG</option>
+              <option value="webp">WebP</option>
+            </select>
+            <div class="new-dims" id="newDims"></div>
+            <button type="button" id="resizeBtn" class="btn btn-primary btn-lg">Resize &amp; download</button>
+            <button type="button" id="resetBtn" class="btn btn-ghost btn-lg">New image</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top"><strong>ImgResize</strong><span>100% client-side · nothing leaves this device</span></div>
+  </footer>
+
+  <div id="toastHost" class="toast-host" aria-live="assertive"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
