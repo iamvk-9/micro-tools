@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DupRemover — remove duplicate lines from text, with optional case-sensitivity, sorting and empty-line cleanup. 100% in your browser.">
+  <title>DupRemover — Remove Duplicate Text</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300a99b'/%3E%3Crect x='18' y='14' width='20' height='20' rx='4' fill='%23fff' opacity='.5'/%3E%3Crect x='26' y='30' width='20' height='20' rx='4' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../" aria-label="Micro tools home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="22" height="22">
+            <rect width="64" height="64" rx="14" fill="#00a99b"/>
+            <rect x="18" y="14" width="20" height="20" rx="4" fill="#fff" opacity=".5"/>
+            <rect x="26" y="30" width="20" height="20" rx="4" fill="#fff"/>
+          </svg>
+        </span>
+        <span class="brand-name">Dup<span>Remover</span></span>
+      </a>
+      <a class="back-link" href="../">← All tools</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1 class="hero-title">Remove <span class="accent">duplicate</span> lines</h1>
+      <p class="hero-sub">Paste a list of lines and remove every duplicate — keep only the first occurrence of each.</p>
+
+      <div class="panel">
+        <div class="duo">
+          <div class="col">
+            <div class="col-head">
+              <label class="field-label" for="inputText">Input</label>
+              <span id="inputCount" class="mini-count"></span>
+            </div>
+            <textarea id="inputText" class="text-input" rows="14" placeholder="One item per line..." spellcheck="false"></textarea>
+          </div>
+          <div class="col">
+            <div class="col-head">
+              <label class="field-label" for="outputText">Output</label>
+              <button type="button" id="copyBtn" class="btn btn-secondary btn-small">Copy</button>
+            </div>
+            <textarea id="outputText" class="text-input" rows="14" placeholder="Result appears here..." spellcheck="false" readonly></textarea>
+          </div>
+        </div>
+
+        <div class="options-row">
+          <label class="check"><input type="checkbox" id="caseSensitive"> Case-sensitive matching</label>
+          <label class="check"><input type="checkbox" id="trimSpaces"> Trim spaces before comparing</label>
+          <label class="check"><input type="checkbox" id="removeEmpty"> Remove empty lines</label>
+          <label class="check"><input type="checkbox" id="sortOutput"> Sort output A→Z</label>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="processBtn" class="btn btn-primary btn-lg">Remove duplicates</button>
+          <button type="button" id="clearBtn" class="btn btn-ghost btn-lg">Clear</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top"><strong>DupRemover</strong><span>100% client-side · nothing leaves this device</span></div>
+  </footer>
+
+  <div id="toastHost" class="toast-host" aria-live="assertive"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
