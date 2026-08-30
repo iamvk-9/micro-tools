@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Text Case Converter — convert text to uppercase, lowercase, title case, sentence case, camelCase and more. 100% in your browser.">
+  <title>TextCase — Convert Text Case</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300a99b'/%3E%3Ctext x='32' y='44' font-size='34' font-weight='bold' text-anchor='middle' fill='%23fff' font-family='Georgia,serif'%3EAa%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../" aria-label="Micro tools home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="22" height="22">
+            <rect width="64" height="64" rx="14" fill="#00a99b"/>
+            <text x="32" y="44" font-size="34" font-weight="bold" text-anchor="middle" fill="#fff" font-family="Georgia,serif">Aa</text>
+          </svg>
+        </span>
+        <span class="brand-name">Text<span>Case</span></span>
+      </a>
+      <a class="back-link" href="../">← All tools</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1 class="hero-title">Convert <span class="accent">text case</span></h1>
+      <p class="hero-sub">Paste text and instantly convert between uppercase, lowercase, title case, camelCase and more.</p>
+
+      <div class="panel">
+        <div class="converter-row">
+          <div class="col">
+            <div class="col-head">
+              <label class="field-label" for="inputText">Input</label>
+              <button type="button" id="clearBtn" class="btn btn-ghost btn-small">Clear</button>
+            </div>
+            <textarea id="inputText" class="text-input" rows="10" placeholder="Type or paste your text here..." spellcheck="false"></textarea>
+          </div>
+          <div class="col">
+            <div class="col-head">
+              <label class="field-label" for="outputText">Output</label>
+              <button type="button" id="copyBtn" class="btn btn-secondary btn-small">Copy</button>
+            </div>
+            <div id="outputArea" class="output-area text-input" contenteditable="false" spellcheck="false" aria-label="Converted output"></div>
+          </div>
+        </div>
+
+        <div class="case-grid">
+          <button type="button" class="case-btn" data-case="upper">
+            <span class="case-name">UPPERCASE</span>
+            <span class="case-sample">convert to upper</span>
+          </button>
+          <button type="button" class="case-btn" data-case="lower">
+            <span class="case-name">lowercase</span>
+            <span class="case-sample">CONVERT TO LOWER</span>
+          </button>
+          <button type="button" class="case-btn" data-case="title">
+            <span class="case-name">Title Case</span>
+            <span class="case-sample">convert to title case</span>
+          </button>
+          <button type="button" class="case-btn" data-case="sentence">
+            <span class="case-name">Sentence case</span>
+            <span class="case-sample">convert to sentence case</span>
+          </button>
+          <button type="button" class="case-btn" data-case="camels">
+            <span class="case-name">camelCase</span>
+            <span class="case-sample">convert to camel case</span>
+          </button>
+          <button type="button" class="case-btn" data-case="pascal">
+            <span class="case-name">PascalCase</span>
+            <span class="case-sample">convert to pascal case</span>
+          </button>
+          <button type="button" class="case-btn" data-case="snake">
+            <span class="case-name">snake_case</span>
+            <span class="case-sample">convert to snake case</span>
+          </button>
+          <button type="button" class="case-btn" data-case="kebab">
+            <span class="case-name">kebab-case</span>
+            <span class="case-sample">convert to kebab case</span>
+          </button>
+          <button type="button" class="case-btn" data-case="inverse">
+            <span class="case-name">InVeRsE cAsE</span>
+            <span class="case-sample">inverse the case</span>
+          </button>
+          <button type="button" class="case-btn" data-case="alternating">
+            <span class="case-name">aLtErNaTiNg</span>
+            <span class="case-sample">alternate the case</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top"><strong>TextCase</strong><span>100% client-side · nothing leaves this device</span></div>
+  </footer>
+
+  <div id="toastHost" class="toast-host" aria-live="assertive"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
