@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ImgCompress — compress images (JPG, PNG, WebP) right in your browser with adjustable quality. Nothing is ever uploaded.">
+  <title>ImgCompress — Image Compressor</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300a99b'/%3E%3Cpath d='M16 16h24l8 8v24H16z' fill='%23fff' opacity='.95'/%3E%3Cpath d='M14 50h36v-4H14z' fill='%23fff'/%3E%3Ccircle cx='24' cy='22' r='3' fill='%2300a99b'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../" aria-label="Micro tools home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="22" height="22">
+            <rect width="64" height="64" rx="14" fill="#00a99b"/>
+            <path d="M16 16h24l8 8v24H16z" fill="#fff" opacity=".95"/>
+            <path d="M14 50h36v-4H14z" fill="#fff"/>
+            <circle cx="24" cy="22" r="3" fill="#00a99b"/>
+          </svg>
+        </span>
+        <span class="brand-name">Img<span>Compress</span></span>
+      </a>
+      <a class="back-link" href="../">← All tools</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1 class="hero-title">Compress <span class="accent">images</span></h1>
+      <p class="hero-sub">Reduce the file size of JPG, PNG and WebP images. Re-encoded locally in your browser — nothing is uploaded.</p>
+
+      <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="Drop images here or browse">
+        <input type="file" id="fileInput" accept="image/*" multiple hidden aria-hidden="true" tabindex="-1">
+        <svg class="dz-icon" viewBox="0 0 64 64" width="50" height="50" aria-hidden="true">
+          <rect width="64" height="64" rx="12" fill="#e7f4f2"/>
+          <path d="M18 16h20l8 8v24H18z" fill="#00a99b" opacity=".9"/>
+          <path d="M16 48h32v-4H16z" fill="#00a99b"/>
+          <circle cx="26" cy="22" r="3" fill="#fff"/>
+        </svg>
+        <p class="dz-title"><strong>Drop images here</strong></p>
+        <p class="dz-sub">or</p>
+        <button type="button" id="browseBtn" class="btn btn-primary">Browse</button>
+        <p class="dz-hint">JPG, PNG, WebP — multiple files at once</p>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label class="field-label" for="qualityRange">Quality: <span id="qualityVal" class="val">70%</span></label>
+          <input type="range" id="qualityRange" min="10" max="100" value="70">
+        </div>
+        <div class="control">
+          <label class="field-label" for="formatSel">Output format</label>
+          <select id="formatSel">
+            <option value="jpeg" selected>JPEG (smallest)</option>
+            <option value="webp">WebP</option>
+            <option value="png">PNG</option>
+          </select>
+        </div>
+        <button type="button" id="downloadAllBtn" class="btn btn-secondary btn-lg">Download all</button>
+      </div>
+
+      <div id="fileList" class="file-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top"><strong>ImgCompress</strong><span>100% client-side · nothing leaves this device</span></div>
+  </footer>
+
+  <div id="toastHost" class="toast-host" aria-live="assertive"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
