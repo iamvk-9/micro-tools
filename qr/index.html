@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="QR Code Generator — encode text, files, images and more into QR codes. 100% in your browser. Nothing leaves your device.">
+  <title>QRany — Generate QR Codes from Anything</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300a99b'/%3E%3Crect x='14' y='14' width='16' height='16' rx='3' fill='%23fff'/%3E%3Crect x='34' y='14' width='16' height='16' rx='3' fill='%23fff'/%3E%3Crect x='14' y='34' width='16' height='16' rx='3' fill='%23fff'/%3E%3Crect x='38' y='38' width='8' height='8' rx='1' fill='%23fff'/%3E%3Crect x='18' y='18' width='8' height='8' rx='1' fill='%2300a99b'/%3E%3Crect x='38' y='18' width='8' height='8' rx='1' fill='%2300a99b'/%3E%3Crect x='18' y='38' width='8' height='8' rx='1' fill='%2300a99b'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./" aria-label="QRany home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="22" height="22">
+            <rect width="64" height="64" rx="14" fill="#00a99b"/>
+            <rect x="14" y="14" width="16" height="16" rx="3" fill="#fff"/>
+            <rect x="34" y="14" width="16" height="16" rx="3" fill="#fff"/>
+            <rect x="14" y="34" width="16" height="16" rx="3" fill="#fff"/>
+            <rect x="38" y="38" width="8" height="8" rx="1" fill="#fff"/>
+            <rect x="18" y="18" width="8" height="8" rx="1" fill="#00a99b"/>
+            <rect x="38" y="18" width="8" height="8" rx="1" fill="#00a99b"/>
+            <rect x="18" y="38" width="8" height="8" rx="1" fill="#00a99b"/>
+          </svg>
+        </span>
+        <span class="brand-name">QR<span>any</span></span>
+      </a>
+      <div class="topbar-note" title="All generation happens locally. Nothing is uploaded.">100% client-side</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1 class="hero-title">Generate <span class="accent">QR Codes</span> from anything</h1>
+      <p class="hero-sub">Type text or paste a URL — instantly get a scannable QR code. Download as PNG or SVG.</p>
+
+      <div class="panels">
+        <div class="panel input-panel">
+          <h2 class="panel-title">Input</h2>
+
+          <div id="tabText" class="tab-content" role="tabpanel">
+            <label class="field-label" for="textInput">Enter text or URL</label>
+            <textarea id="textInput" class="text-input" rows="5" placeholder="https://example.com or any text..." spellcheck="false"></textarea>
+            <div class="char-count"><span id="charCount">0</span> characters</div>
+          </div>
+
+          <div class="options-section">
+            <h2 class="panel-title">Options</h2>
+            <div class="option-grid">
+              <div class="field">
+                <label class="field-label" for="errorLevel">Error correction</label>
+                <select id="errorLevel" class="field-select">
+                  <option value="L">L — Low (7%)</option>
+                  <option value="M" selected>M — Medium (15%)</option>
+                  <option value="Q">Q — Quartile (25%)</option>
+                  <option value="H">H — High (30%)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="qrSize">Pixel size</label>
+                <select id="qrSize" class="field-select">
+                  <option value="4">Small (4x)</option>
+                  <option value="8" selected>Medium (8x)</option>
+                  <option value="12">Large (12x)</option>
+                  <option value="16">XL (16x)</option>
+                </select>
+              </div>
+              <div class="field color-field">
+                <label class="field-label" for="fgColor">Foreground</label>
+                <div class="color-wrap">
+                  <input type="color" id="fgColor" class="color-pick" value="#000000">
+                  <span id="fgColorHex" class="color-hex">#000000</span>
+                </div>
+              </div>
+              <div class="field color-field">
+                <label class="field-label" for="bgColor">Background</label>
+                <div class="color-wrap">
+                  <input type="color" id="bgColor" class="color-pick" value="#ffffff">
+                  <span id="bgColorHex" class="color-hex">#ffffff</span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="field-label" for="outputFmt">Output format</label>
+                <select id="outputFmt" class="field-select">
+                  <option value="png" selected>PNG</option>
+                  <option value="svg">SVG (vector)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel preview-panel">
+          <h2 class="panel-title">Preview</h2>
+          <div id="previewArea" class="preview-area">
+            <div class="preview-placeholder">
+              <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" style="opacity:.3">
+                <rect width="64" height="64" rx="12" fill="#e4e9ec"/>
+                <rect x="14" y="14" width="16" height="16" rx="3" fill="#b0bac2"/>
+                <rect x="34" y="14" width="16" height="16" rx="3" fill="#b0bac2"/>
+                <rect x="14" y="34" width="16" height="16" rx="3" fill="#b0bac2"/>
+                <rect x="38" y="38" width="8" height="8" rx="1" fill="#b0bac2"/>
+              </svg>
+              <p>Type something or drop a file to generate a QR code</p>
+            </div>
+            <canvas id="qrCanvas" class="qr-canvas hidden"></canvas>
+            <div id="qrSvgWrap" class="qr-svg-wrap hidden"></div>
+          </div>
+          <div id="downloadBar" class="download-bar hidden">
+            <button type="button" id="downloadBtn" class="btn btn-primary btn-lg">Download QR Code</button>
+            <button type="button" id="copyBtn" class="btn btn-secondary btn-lg">Copy to clipboard</button>
+          </div>
+          <div id="qrMeta" class="qr-meta hidden"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <strong>QRany</strong>
+      <span>100% client-side · nothing leaves this device</span>
+    </div>
+    <p class="footer-formats">Encoded as: <span>Text</span><span>URLs</span><span>VCards</span><span>WiFi</span><span>Email</span><span>Phone</span></p>
+  </footer>
+
+  <div id="toastHost" class="toast-host" aria-live="assertive"></div>
+
+  <script src="libs/qrcode-generator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

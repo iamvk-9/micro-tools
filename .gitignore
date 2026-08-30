@@ -1,0 +1,11 @@
+# Micro tools — repo-wide ignore rules
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+
+# Local servers / caches
+node_modules/
+*.log
+
+# Keep vendored browser libs in the repo (each tool must work offline)
